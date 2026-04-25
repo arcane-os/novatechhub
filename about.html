@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modeste YABLA — Fondateur NovaTech Hub</title>
+  <meta name="description" content="S. Modeste YABLA, 19 ans, fondateur de NovaTech Hub. Technicien informatique, étudiant en SIL à HECM Bénin, créateur de contenu tech." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    /* ── HERO ABOUT ── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 4rem;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim));
+    }
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-dim);
+      display: block;
+      margin: 0 auto 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.15s forwards;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+    .hero-name em { color: var(--gold); font-style: italic; }
+    .hero-role {
+      font-size: 14px;
+      color: var(--white-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    /* ── HOOK ── */
+    .hook {
+      background: var(--black3);
+      border-left: 2px solid var(--gold);
+      padding: 2rem 2.5rem;
+      max-width: 700px;
+      margin: 0 auto 5rem;
+      text-align: left;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+    .hook-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .hook-text em { color: var(--gold); font-style: normal; font-weight: 400; }
+
+    /* ── STATS ABOUT ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 5rem;
+    }
+    .stat { padding: 2rem; text-align: center; border-right: 0.5px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .stat-label { font-size: 12px; color: var(--white-dim); letter-spacing: 0.06em; margin-top: 4px; }
+
+    /* ── STORY ── */
+    .section { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem 5rem; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .story-text p { font-size: 15px; color: var(--white-dim); line-height: 1.9; margin-bottom: 1.2rem; }
+    .story-text p strong { color: var(--white); font-weight: 500; }
+    .story-text p em { color: var(--gold); font-style: italic; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 1.5rem; padding-bottom: 2rem; position: relative; }
+    .tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px; top: 40px; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .tl-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--black3);
+      border: 1px solid var(--gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px; color: var(--gold); font-weight: 500;
+    }
+    .tl-year { font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+    .tl-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+    .tl-desc { font-size: 13px; color: var(--white-dim); line-height: 1.6; }
+
+    /* ── MISSION ── */
+    .mission-section {
+      background: var(--black2);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 5rem 2.5rem;
+      margin-bottom: 5rem;
+    }
+    .mission-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .mission-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .mission-quote em { color: var(--gold); font-style: normal; }
+
+    /* ── COMPÉTENCES ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-bottom: 5rem;
+    }
+    .skill-card { background: var(--black2); padding: 1.5rem; transition: background 0.2s; }
+    .skill-card:hover { background: var(--black3); }
+    .skill-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .skill-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+    .skill-desc { font-size: 12px; color: var(--white-dim); line-height: 1.6; }
+
+    /* ── CV ── */
+    .cv-section { max-width: 800px; margin: 0 auto; padding: 0 2.5rem 5rem; }
+    .cv-block {
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      background: var(--black2);
+    }
+    .cv-label { font-size: 10px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .cv-title { font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 0.25rem; }
+    .cv-sub { font-size: 13px; color: var(--white-dim); margin-bottom: 0.5rem; }
+    .cv-desc { font-size: 12px; color: var(--white-dim); line-height: 1.7; }
+
+    /* ── CTA ABOUT ── */
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .cta-line {
+      width: 1px; height: 3rem;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      margin: 0 auto 2.5rem;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-section h2 em { color: var(--gold); font-style: italic; }
+    .cta-section p { font-size: 14px; color: var(--white-dim); margin-bottom: 2rem; }
+
+    /* ── RESPONSIVE ABOUT ── */
+    @media (max-width: 768px) {
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: none; }
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .section { padding: 0 1.5rem 3rem; }
+      .cv-section { padding: 0 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav>
+  <a class="logo" href="index.html">Nova<span>Tech</span> Hub</a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="index.html#store">Produits</a>
+    <a href="index.html#channels">Chaînes</a>
+    <a href="about.html" style="color:var(--gold);">À propos</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="index.html#store">Voir les produits</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Accueil</a>
+  <a href="index.html#store">Produits</a>
+  <a href="index.html#channels">Chaînes</a>
+  <a href="about.html" style="color:var(--gold);">À propos</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<div class="hero">
+  <p class="hero-tag">Fondateur · NovaTech Hub</p>
+  <img class="avatar" src="assets/images/modeste.png" alt="S. Modeste YABLA" />
+  <h1 class="hero-name">S. <em>Modeste</em><br>YABLA</h1>
+  <p class="hero-role">Technicien · Étudiant en SIL · Créateur de contenu tech</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     HOOK
+══════════════════════════════════════ -->
+<div class="hook">
+  <p class="hook-text">
+    "À 19 ans, pendant que d'autres attendent un diplôme pour commencer,
+    <em>j'ai décidé de transformer ce que je sais déjà</em>
+    en valeur réelle pour ceux qui en ont besoin."
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">19</div>
+    <div class="stat-label">Ans · Né le 03/01/2007</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">L1</div>
+    <div class="stat-label">Licence · HECM Bénin</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">SIL</div>
+    <div class="stat-label">Systèmes Informatiques</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STORY + TIMELINE
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="story-grid">
+
+    <div class="story-text">
+      <p class="section-tag">Mon histoire</p>
+      <h2 class="section-title">Pas un expert.<br><em>Quelqu'un qui résout.</em></h2>
+      <p>Je ne suis pas un génie de la tech. Je suis quelqu'un qui a <strong>décidé de comprendre</strong> ce que les autres subissent sans comprendre.</p>
+      <p>Au lycée technique, filière <strong>IMI (Installation &amp; Maintenance Informatique)</strong>, j'ai appris à réparer ce que les autres jettent, à diagnostiquer ce que les autres ignorent.</p>
+      <p>Aujourd'hui en <strong>Licence 1 à HECM</strong> en Systèmes Informatiques et Logiciels, je continue d'apprendre — mais j'ai compris une chose :</p>
+      <p><em>La connaissance ne vaut rien si elle reste dans ta tête.</em> Elle vaut tout quand elle aide quelqu'un d'autre.</p>
+      <p>C'est pour ça que j'ai créé <strong>NovaTech Hub</strong>.</p>
+    </div>
+
+    <div class="timeline">
+      <p class="section-tag">Parcours</p>
+      <br>
+      <div class="tl-item">
+        <div class="tl-dot">01</div>
+        <div class="tl-content">
+          <p class="tl-year">Lycée Technique · Ina</p>
+          <p class="tl-title">Filière IMI</p>
+          <p class="tl-desc">Installation &amp; Maintenance Informatique. Premiers contacts avec le hardware, le software, les réseaux.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">02</div>
+        <div class="tl-content">
+          <p class="tl-year">2025 — Aujourd'hui</p>
+          <p class="tl-title">Licence 1 · HECM Bénin</p>
+          <p class="tl-desc">Filière SIL — Systèmes Informatiques et Logiciels. Approfondissement des bases théoriques et pratiques.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">03</div>
+        <div class="tl-content">
+          <p class="tl-year">2026</p>
+          <p class="tl-title">Création de NovaTech Hub</p>
+          <p class="tl-desc">Transformer ma connaissance en valeur réelle. Guides, tutoriels et solutions pour ceux qui en ont besoin.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MISSION
+══════════════════════════════════════ -->
+<div class="mission-section">
+  <div class="mission-inner">
+    <p class="section-tag" style="text-align:center; margin-bottom:1.5rem;">Ma mission</p>
+    <p class="mission-quote">
+      "Donner de la valeur ajoutée à partir de mes propres connaissances et de mon expérience —
+      pour <em>résoudre chaque problème</em> auquel je peux apporter une solution
+      et être au service de ceux qui ont besoin de ce que je sais."
+    </p>
+    <p style="font-size:13px; color:var(--white-dim); letter-spacing:0.05em;">— S. Modeste YABLA, Fondateur NovaTech Hub</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     COMPÉTENCES
+══════════════════════════════════════ -->
+<div class="section">
+  <p class="section-tag">Ce que je maîtrise</p>
+  <h2 class="section-title">Mes compétences</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <p class="skill-title">Maintenance Hardware</p>
+      <p class="skill-desc">Diagnostic et réparation de PC, smartphones, périphériques. Identification des pannes matérielles.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <p class="skill-title">Software &amp; Systèmes</p>
+      <p class="skill-desc">Installation, configuration et dépannage de systèmes d'exploitation Windows, Android, iOS.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <p class="skill-title">Réseaux Informatiques</p>
+      <p class="skill-desc">Configuration réseau, diagnostic Wi-Fi, résolution de problèmes de connectivité.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <p class="skill-title">Tech Mobile</p>
+      <p class="skill-desc">Expertise Android et iOS — optimisation, dépannage, récupération de données.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎯</div>
+      <p class="skill-title">Création de Contenu</p>
+      <p class="skill-desc">Vulgarisation tech, scripts vidéo, guides pratiques — rendre la tech accessible à tous.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <p class="skill-title">Systèmes Logiciels</p>
+      <p class="skill-desc">Filière SIL — conception et analyse de systèmes informatiques et logiciels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CV
+══════════════════════════════════════ -->
+<div class="cv-section">
+  <p class="section-tag">Curriculum Vitae</p>
+  <h2 class="section-title" style="margin-bottom:2rem;">Formation &amp; <em>Expérience</em></h2>
+
+  <div class="cv-block">
+    <p class="cv-label">Formation · En cours</p>
+    <p class="cv-title">Licence 1 — Systèmes Informatiques et Logiciels (SIL)</p>
+    <p class="cv-sub">HECM · Bénin · 2025 — Présent</p>
+    <p class="cv-desc">Formation universitaire en systèmes informatiques, logiciels, algorithmique et réseaux.</p>
+  </div>
+
+  <div class="cv-block">
+    <p class="cv-label">Formation · Diplômé</p>
+    <p class="cv-title">Lycée Technique Ina — Filière IMI</p>
+    <p class="cv-sub">Installation &amp; Maintenance Informatique · Bénin</p>
+    <p class="cv-desc">Formation technique en installation, maintenance et dépannage de systèmes informatiques. Hardware, software, réseaux locaux.</p>
+  </div>
+
+  <div class="cv-block">
+    <p class="cv-label">Projet · 2026</p>
+    <p class="cv-title">Fondateur — NovaTech Hub</p>
+    <p class="cv-sub">Créateur de contenu tech · Bénin</p>
+    <p class="cv-desc">Création et développement d'une plateforme de vulgarisation tech — guides PDF, tutoriels vidéo animés, produits digitaux. YouTube · Instagram · TikTok.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<div class="cta-section">
+  <div class="cta-line"></div>
+  <h2>Tu veux travailler<br><em>avec moi ?</em></h2>
+  <p>Que tu aies un problème tech ou que tu veuilles découvrir mes produits — je suis là.</p>
+  <a class="btn-primary" href="https://jrgvyjad.mychariow.shop/prd_t4fary" target="_blank" rel="noopener" style="margin:0.5rem;">Voir mes produits →</a>
+  <a class="btn-secondary" href="index.html#contact" style="margin:0.5rem;">Me contacter</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">NovaTech Hub</div>
+  <div class="footer-copy">© 2026 S. Modeste YABLA · NovaTech Hub</div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
