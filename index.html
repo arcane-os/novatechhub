@@ -1,548 +1,1376 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaTech Hub — La Tech Rendue Simple</title>
-  <meta name="description" content="Guides pratiques, tutoriels animés et produits digitaux pour maîtriser votre technologie. Basé au Bénin, portée mondiale." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaTech Hub — Libère ton potentiel numérique</title>
+<meta name="description" content="Templates, guides et outils pour entrepreneurs africains et francophones. Construis ton futur numérique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 
-  <style>
-    /* ── HERO ── */
-    .hero {
-      padding: 7rem 2.5rem 5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px; height: 4rem;
-      background: linear-gradient(to bottom, transparent, var(--gold-dim));
-    }
-    .hero-tag {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.1s forwards;
-    }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.2s forwards;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero p {
-      font-size: 15px;
-      color: var(--white-dim);
-      line-height: 1.8;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.3s forwards;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.4s forwards;
-    }
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #8A6A1F;
+    --copper: #C8520A;
+    --copper-light: #E06B1A;
+    --bg: #080806;
+    --bg-2: #0F0F0B;
+    --bg-3: #161610;
+    --bg-4: #1E1E16;
+    --text: #F2EDD8;
+    --text-muted: #8A8472;
+    --text-dim: #4A4840;
+    --border: rgba(201,168,76,0.12);
+    --border-strong: rgba(201,168,76,0.28);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
 
-    /* ── STATS ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 0.5px solid var(--border);
-      border-bottom: 0.5px solid var(--border);
-    }
-    .stat {
-      padding: 2rem;
-      text-align: center;
-      border-right: 0.5px solid var(--border);
-    }
-    .stat:last-child { border-right: none; }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--gold);
-    }
-    .stat-label { font-size: 12px; color: var(--white-dim); letter-spacing: 0.06em; margin-top: 4px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── PRODUITS ── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-    }
-    .product-card {
-      background: var(--black2);
-      padding: 2rem;
-      transition: background 0.2s;
-    }
-    .product-card:hover { background: var(--black3); }
-    .product-card.featured {
-      background: var(--black3);
-      border-bottom: 2px solid var(--gold);
-    }
-    .product-tag {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .product-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-    }
-    .product-desc {
-      font-size: 13px;
-      color: var(--white-dim);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .product-price {
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-      margin-bottom: 1rem;
-    }
-    .product-btn {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      border-bottom: 0.5px solid var(--gold-dim);
-      padding-bottom: 2px;
-      cursor: pointer;
-      transition: border-color 0.2s;
-      text-decoration: none;
-    }
-    .product-btn:hover { border-color: var(--gold); }
-    .badge-new {
-      background: var(--gold);
-      color: var(--black);
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 2px;
-      margin-left: 8px;
-      font-weight: 500;
-      vertical-align: middle;
-    }
-    .product-soon { opacity: 0.6; }
+  html { scroll-behavior: smooth; }
 
-    /* ── CHAÎNES ── */
-    .channels-section {
-      background: var(--black2);
-      border-top: 0.5px solid var(--border);
-      border-bottom: 0.5px solid var(--border);
-    }
-    .channels-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 2.5rem;
-    }
-    .platforms-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-top: 3rem;
-    }
-    .platform-card {
-      background: var(--black2);
-      padding: 2rem;
-      text-align: center;
-      transition: background 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .platform-card:hover { background: var(--black3); }
-    .platform-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .platform-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-    .platform-handle {
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-    }
-    .platform-desc { font-size: 13px; color: var(--white-dim); line-height: 1.6; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    /* ── ABOUT HOME ── */
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    .about-text h2 em { color: var(--gold); font-style: italic; }
-    .about-text p { font-size: 14px; color: var(--white-dim); line-height: 1.9; margin-bottom: 1rem; }
-    .about-values { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .value-item { display: flex; align-items: flex-start; gap: 1rem; }
-    .value-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-    .value-text { font-size: 13px; color: var(--white-dim); line-height: 1.6; }
-    .value-text strong { color: var(--white); font-weight: 500; }
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
 
-    .about-visual {
-      background: var(--black3);
-      border: 0.5px solid var(--border);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .about-visual img {
-      width: 100%;
-      max-height: 380px;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-    .about-visual-caption {
-      padding: 1.2rem 2rem;
-      text-align: center;
-      border-top: 0.5px solid var(--border);
-      width: 100%;
-    }
-    .about-visual-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
-    .about-visual-role { font-size: 12px; color: var(--gold); letter-spacing: 0.08em; }
+  /* ── LANG SWITCH ── */
+  .lang-btn {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 1000;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid var(--border-strong);
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(12px);
+  }
+  .lang-btn:hover {
+    background: rgba(201,168,76,0.18);
+    border-color: var(--gold);
+  }
 
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--black2);
-      border-top: 0.5px solid var(--border);
-    }
-    .contact-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 5rem 2.5rem;
-      text-align: center;
-    }
-    .contact-inner h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .contact-inner h2 em { color: var(--gold); font-style: italic; }
-    .contact-inner > p { font-size: 14px; color: var(--white-dim); margin-bottom: 2.5rem; line-height: 1.8; }
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
-    .contact-form input,
-    .contact-form textarea {
-      background: var(--black3);
-      border: 0.5px solid var(--border);
-      color: var(--white);
-      padding: 14px 16px;
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      border-radius: 2px;
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus { border-color: var(--gold-dim); }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: var(--white-dim); }
-    .contact-form textarea { height: 120px; resize: vertical; }
-    #form-message { font-size: 13px; margin-top: 0.5rem; min-height: 1.2em; }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    background: rgba(8,8,6,0.7);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .nav-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo-text span {
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    margin-left: auto;
+    margin-right: 5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
 
-    /* ── CTA FINAL ── */
-    .cta-section { text-align: center; padding: 6rem 2.5rem; }
-    .cta-line {
-      width: 1px; height: 4rem;
-      background: linear-gradient(to bottom, var(--gold-dim), transparent);
-      margin: 0 auto 3rem;
-    }
-    .cta-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .cta-section h2 em { color: var(--gold); font-style: italic; }
-    .cta-section p { font-size: 14px; color: var(--white-dim); margin-bottom: 2.5rem; }
+  /* ── SECTIONS GÉNÉRALES ── */
+  section { position: relative; z-index: 1; }
 
-    /* ── RESPONSIVE INDEX ── */
-    @media (max-width: 768px) {
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(3) { border-top: 0.5px solid var(--border); }
-      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .platforms-grid { grid-template-columns: 1fr; }
-      .channels-inner { padding: 3rem 1.5rem; }
-    }
-  </style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,82,10,0.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--copper);
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title .accent {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg);
+    padding: 0.85rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--gold);
+    padding: 0.85rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Hero right - visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .hero-card-stack {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+  .hcard {
+    position: absolute;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    width: 280px;
+    transition: transform 0.6s ease;
+  }
+  .hcard:nth-child(1) { top: 0; left: 40px; transform: rotate(-3deg); }
+  .hcard:nth-child(2) { top: 60px; left: 20px; transform: rotate(1deg); }
+  .hcard:nth-child(3) { top: 120px; left: 0; transform: rotate(0deg); z-index: 3; background: var(--bg-4); border-color: var(--border-strong); }
+  .hcard-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .hcard-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .hcard-price {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-top: 1rem;
+  }
+  .hcard-price span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+  }
+  .hcard-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--copper));
+    margin: 1rem 0 0.5rem;
+    width: 60%;
+  }
+
+  /* ── STATS ── */
+  #stats {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    padding: 2rem 2.5rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    margin-bottom: 4rem;
+  }
+  .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--copper);
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-title .accent { color: var(--gold); font-style: italic; }
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 1rem;
+    max-width: 540px;
+  }
+
+  /* ── PRODUITS ── */
+  #produits {
+    padding: 7rem 0;
+  }
+  .produits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .produit-card {
+    background: var(--bg-2);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .produit-card:hover {
+    background: var(--bg-3);
+  }
+  .produit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--copper));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .produit-card:hover::before {
+    transform: scaleX(1);
+  }
+  .produit-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+  }
+  .produit-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+  .produit-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .produit-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .produit-price {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .produit-price .range {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .produit-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+  }
+  .produit-cta {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+    font-family: var(--font-mono);
+  }
+  .produit-cta:hover {
+    border-color: var(--gold);
+    letter-spacing: 0.2em;
+  }
+
+  /* ── ABOUT / MANIFESTE ── */
+  #manifeste {
+    padding: 7rem 0;
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .manifeste-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .manifeste-text {
+    position: relative;
+  }
+  .manifeste-quote {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--text);
+    line-height: 1.5;
+    font-style: italic;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+  .manifeste-body {
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .manifeste-visual {
+    position: relative;
+  }
+  .manifeste-visual-inner {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+  }
+  .manifeste-visual-inner::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border);
+    z-index: -1;
+  }
+  .manifeste-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .manifeste-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .manifeste-list .check {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .manifeste-list .check::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    display: block;
+  }
+  .manifeste-list .item-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  .manifeste-list .item-text strong {
+    color: var(--text);
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── CHAÎNES / PLATFORMS ── */
+  #plateformes {
+    padding: 7rem 0;
+  }
+  .plateformes-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  .plateforme-card {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 2rem 1.75rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .plateforme-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .plateforme-card.yt::after { background: #FF0000; }
+  .plateforme-card.ig::after { background: linear-gradient(90deg, #F77737, #C13584); }
+  .plateforme-card.tt::after { background: linear-gradient(90deg, #69C9D0, #EE1D52); }
+  .plateforme-card:hover { background: var(--bg-3); border-color: var(--border-strong); }
+  .plateforme-card:hover::after { opacity: 1; }
+  .plateforme-icon-wrap {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .plateforme-name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .plateforme-handle {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .plateforme-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .plateforme-arrow {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--text-dim);
+    font-size: 18px;
+    transition: all 0.3s;
+  }
+  .plateforme-card:hover .plateforme-arrow {
+    color: var(--gold);
+    transform: translate(3px, -3px);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 7rem 0;
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { min-height: 130px; }
+  .form-group select option { background: var(--bg-3); }
+  .contact-info { padding-top: 0.5rem; }
+  .contact-info-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .contact-info-item:first-child { border-top: 1px solid var(--border); }
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .contact-info-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.25rem;
+  }
+  .contact-info-value {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .contact-info-value a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ── ARCANE BADGE ── */
+  .arcane-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,82,10,0.07);
+    border: 1px solid rgba(200,82,10,0.25);
+    padding: 0.4rem 0.85rem;
+    margin-bottom: 2.5rem;
+    text-decoration: none;
+  }
+  .arcane-badge-text {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--copper-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+  .footer-arcane {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+  }
+  .footer-arcane a {
+    color: var(--copper);
+    text-decoration: none;
+  }
+
+  /* ── SÉPARATEUR DÉCORATIF ── */
+  .deco-sep {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .deco-sep-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .deco-sep-mark {
+    width: 6px;
+    height: 6px;
+    background: var(--copper);
+    transform: rotate(45deg);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .anim-1 { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+  .anim-2 { animation: fadeUp 0.7s 0.15s ease forwards; opacity: 0; }
+  .anim-3 { animation: fadeUp 0.7s 0.3s ease forwards; opacity: 0; }
+  .anim-4 { animation: fadeUp 0.7s 0.45s ease forwards; opacity: 0; }
+  .anim-5 { animation: fadeUp 0.7s 0.6s ease forwards; opacity: 0; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.5rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .produits-grid { grid-template-columns: 1fr; }
+    .manifeste-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-title { font-size: 2.4rem; }
+    .section-title { font-size: 1.9rem; }
+  }
+
+  /* ── HIDDEN PAR DÉFAUT (gestion langue) ── */
+  [data-en] { display: none; }
+  body.lang-en [data-fr] { display: none; }
+  body.lang-en [data-en] { display: block; }
+  body.lang-en .inline-en { display: inline !important; }
+  body.lang-en .inline-fr { display: none !important; }
+  .inline-en { display: none; }
+  .inline-fr { display: inline; }
+</style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     NAVIGATION
-══════════════════════════════════════ -->
-<nav id="home">
-  <a class="logo" href="#home">Nova<span>Tech</span> Hub</a>
+<!-- LANG SWITCH -->
+<button class="lang-btn" id="langToggle" onclick="toggleLang()">EN / FR</button>
 
-  <div class="nav-links">
-    <a href="#home">Accueil</a>
-    <a href="#store">Produits</a>
-    <a href="#channels">Chaînes</a>
-    <a href="about.html">À propos</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <a class="nav-cta" href="#store">Voir les produits</a>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg class="nav-logo-mark" viewBox="0 0 32 32" fill="none">
+      <!-- NovaTech Hub mark simplifié hexagonale -->
+      <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+      <polygon points="16,8 22,11.5 22,18.5 16,22 10,18.5 10,11.5" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="0.8"/>
+      <circle cx="16" cy="15" r="2.5" fill="#C9A84C"/>
+    </svg>
+    <span class="nav-logo-text">Nova<span>Tech</span> Hub</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#produits" data-fr>Produits</a><a href="#produits" data-en>Products</a></li>
+    <li><a href="#manifeste" data-fr>À propos</a><a href="#manifeste" data-en>About</a></li>
+    <li><a href="#plateformes" data-fr>Chaînes</a><a href="#plateformes" data-en>Channels</a></li>
+    <li><a href="#contact" data-fr>Contact</a><a href="#contact" data-en>Contact</a></li>
+  </ul>
 </nav>
 
-<!-- Menu mobile -->
-<div class="nav-mobile" id="nav-mobile">
-  <a href="#home">Accueil</a>
-  <a href="#store">Produits</a>
-  <a href="#channels">Chaînes</a>
-  <a href="about.html">À propos</a>
-  <a href="#contact">Contact</a>
-  <a href="#store" style="color:var(--gold); font-weight:500;">Voir les produits →</a>
-</div>
-
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
-<div class="hero">
-  <p class="hero-tag">Tech · Simplicité · Innovation</p>
-  <h1>La Tech Rendue<br><em>Simple &amp; Puissante</em><br>Pour Tout Le Monde</h1>
-  <p>Des guides pratiques, des tutoriels animés et des outils concrets pour maîtriser votre technologie — que vous soyez à Cotonou, Paris ou New York.</p>
-  <div class="hero-btns">
-    <a class="btn-primary" href="#store">Découvrir nos produits</a>
-    <a class="btn-secondary" href="#channels">Voir nos chaînes</a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     STATS
-══════════════════════════════════════ -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">Contenu actionnable</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">3</div>
-    <div class="stat-label">Plateformes actives</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">FR · EN</div>
-    <div class="stat-label">Bilingue</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">$7+</div>
-    <div class="stat-label">À partir de</div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     PRODUITS
-══════════════════════════════════════ -->
-<div class="section" id="store">
-  <div class="section-header">
-    <p class="section-tag">Produits Digitaux</p>
-    <h2 class="section-title">Des solutions concrètes<br>à télécharger maintenant</h2>
-  </div>
-
-  <div class="products-grid">
-
-    <!-- Produit 1 : disponible -->
-    <div class="product-card featured">
-      <p class="product-tag">Guide PDF <span class="badge-new">NOUVEAU</span></p>
-      <h3 class="product-title">10 Pannes Android Résolues en 10 Minutes</h3>
-      <p class="product-desc">Le guide pratique pour réparer ton téléphone toi-même. Expliqué simplement, illustré étape par étape. Zéro jargon technique.</p>
-      <div class="product-price">$7</div>
-      <a class="product-btn" href="https://jrgvyjad.mychariow.shop/prd_t4fary" target="_blank" rel="noopener">Obtenir le guide →</a>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <a href="#" class="arcane-badge anim-1">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="6" stroke="#C8520A" stroke-width="1"/>
+            <path d="M4 7 Q7 3 10 7 Q7 11 4 7Z" fill="rgba(200,82,10,0.3)" stroke="#C8520A" stroke-width="0.8"/>
+          </svg>
+          <span class="arcane-badge-text">ArcaneOS Ecosystem</span>
+        </a>
+        <p class="hero-eyebrow anim-1">
+          <span class="inline-fr">Plateforme numérique francophone</span>
+          <span class="inline-en">Francophone Digital Platform</span>
+        </p>
+        <h1 class="hero-title anim-2">
+          <span data-fr>Libère ton<br><span class="accent">potentiel</span><br>numérique.</span>
+          <span data-en>Unlock your<br><span class="accent">digital</span><br>potential.</span>
+        </h1>
+        <p class="hero-sub anim-3" data-fr>
+          Templates, guides et outils conçus pour les entrepreneurs africains et francophones. Construis, optimise et monétise tes projets numériques.
+        </p>
+        <p class="hero-sub anim-3" data-en>
+          Templates, guides, and tools designed for African and francophone entrepreneurs. Build, optimize, and monetize your digital projects.
+        </p>
+        <div class="hero-ctas anim-4">
+          <a href="#produits" class="btn-primary">
+            <span class="inline-fr">Voir les produits</span>
+            <span class="inline-en">Browse products</span>
+          </a>
+          <a href="#manifeste" class="btn-ghost">
+            <span class="inline-fr">Notre vision</span>
+            <span class="inline-en">Our vision</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual anim-5">
+        <div class="hero-card-stack">
+          <div class="hcard">
+            <div class="hcard-tag">Template</div>
+            <div class="hcard-title">Budget Personnel</div>
+            <div class="hcard-bar"></div>
+            <div class="hcard-price">7€ <span>Notion</span></div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-tag">Guide PDF</div>
+            <div class="hcard-title">5 Outils IA Gratuits</div>
+            <div class="hcard-bar"></div>
+            <div class="hcard-price">9€ <span>20 pages</span></div>
+          </div>
+          <div class="hcard">
+            <div class="hcard-tag">Bundle Premium</div>
+            <div class="hcard-title">Pack Entrepreneur 2026</div>
+            <div class="hcard-bar"></div>
+            <div class="hcard-price">24€ <span>Templates + Guides</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Produit 2 : bientôt -->
-    <div class="product-card product-soon">
-      <p class="product-tag">Mini-cours Vidéo · Bientôt</p>
-      <h3 class="product-title">Optimise Ton Android en 7 Jours</h3>
-      <p class="product-desc">Série de courtes vidéos pour transformer ton téléphone en outil ultra-performant. Batteries, vitesse, stockage — tout est couvert.</p>
-      <div class="product-price">$27</div>
-      <a class="product-btn" href="#contact">Être notifié →</a>
-    </div>
-
-    <!-- Produit 3 : bientôt -->
-    <div class="product-card product-soon">
-      <p class="product-tag">Checklist PDF · Bientôt</p>
-      <h3 class="product-title">Checklist Dépannage PC Complet</h3>
-      <p class="product-desc">La checklist ultime pour diagnostiquer et résoudre 95% des problèmes PC courants. Windows, Mac, Linux.</p>
-      <div class="product-price">$9</div>
-      <a class="product-btn" href="#contact">Être notifié →</a>
-    </div>
-
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════════════════════
-     CHAÎNES
-══════════════════════════════════════ -->
-<div class="channels-section" id="channels">
-  <div class="channels-inner">
+<!-- STATS -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label" data-fr>Outils gratuits & open source</span>
+        <span class="stat-label" data-en>Free & open source tools</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label" data-fr>Plateformes de distribution</span>
+        <span class="stat-label" data-en>Distribution platforms</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">FR/EN</span>
+        <span class="stat-label" data-fr>Contenu bilingue</span>
+        <span class="stat-label" data-en>Bilingual content</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2026</span>
+        <span class="stat-label" data-fr>Lancement produits</span>
+        <span class="stat-label" data-en>Products launch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section id="produits">
+  <div class="container">
     <div class="section-header">
-      <p class="section-tag">Contenu Vidéo</p>
-      <h2 class="section-title">Des vidéos qui expliquent<br>ce que personne ne t'a dit</h2>
+      <p class="section-eyebrow">
+        <span class="inline-fr">Ce qu'on construit</span>
+        <span class="inline-en">What we build</span>
+      </p>
+      <h2 class="section-title">
+        <span data-fr>Nos <span class="accent">produits</span></span>
+        <span data-en>Our <span class="accent">products</span></span>
+      </h2>
+      <p class="section-sub" data-fr>Des outils concrets pour aller plus vite, mieux organiser et générer des revenus.</p>
+      <p class="section-sub" data-en>Concrete tools to move faster, organize better, and generate income.</p>
     </div>
+    <div class="produits-grid">
 
-    <div class="platforms-grid">
+      <!-- Produit A -->
+      <div class="produit-card">
+        <div class="produit-num">01 — Templates</div>
+        <svg class="produit-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="6" width="36" height="36" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
+          <rect x="12" y="14" width="24" height="3" rx="1" fill="rgba(201,168,76,0.4)"/>
+          <rect x="12" y="21" width="16" height="2" rx="1" fill="rgba(201,168,76,0.2)"/>
+          <rect x="12" y="27" width="20" height="2" rx="1" fill="rgba(201,168,76,0.2)"/>
+          <rect x="12" y="33" width="12" height="2" rx="1" fill="rgba(201,168,76,0.15)"/>
+        </svg>
+        <h3 class="produit-name" data-fr>Templates & Outils</h3>
+        <h3 class="produit-name" data-en>Templates & Tools</h3>
+        <p class="produit-desc" data-fr>Planners, trackers et business plans prêts à l'emploi. Notion, Excel, Canva. Conçus pour les étudiants et jeunes entrepreneurs africains.</p>
+        <p class="produit-desc" data-en>Ready-to-use planners, trackers and business plans. Notion, Excel, Canva. Designed for students and young African entrepreneurs.</p>
+        <div class="produit-price">
+          5–15€
+          <span class="range" data-fr>Bundle disponible · 20–30€</span>
+          <span class="range" data-en>Bundle available · €20–30</span>
+        </div>
+        <div class="produit-tags">
+          <span class="tag">Notion</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Canva</span>
+        </div>
+        <a href="#contact" class="produit-cta">
+          <span class="inline-fr">Être notifié →</span>
+          <span class="inline-en">Get notified →</span>
+        </a>
+      </div>
 
-      <a class="platform-card" href="https://youtube.com/@nova.tech_hub" target="_blank" rel="noopener">
-        <div class="platform-icon">▶</div>
-        <h3 class="platform-name">YouTube</h3>
-        <p class="platform-handle">@nova.tech_hub</p>
-        <p class="platform-desc">Vidéos longues et approfondies. Tutoriels complets, explications détaillées, valeur ajoutée maximale.</p>
-      </a>
+      <!-- Produit B -->
+      <div class="produit-card">
+        <div class="produit-num">02 — Guides</div>
+        <svg class="produit-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M10 8h28v32a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V8Z" stroke="#C9A84C" stroke-width="1.5"/>
+          <path d="M10 8h20l8 8H10V8Z" fill="rgba(201,168,76,0.12)" stroke="#C9A84C" stroke-width="1"/>
+          <rect x="16" y="22" width="16" height="2" rx="1" fill="rgba(201,168,76,0.35)"/>
+          <rect x="16" y="27" width="12" height="2" rx="1" fill="rgba(201,168,76,0.2)"/>
+          <rect x="16" y="32" width="10" height="2" rx="1" fill="rgba(201,168,76,0.15)"/>
+        </svg>
+        <h3 class="produit-name" data-fr>Mini-Guides PDF</h3>
+        <h3 class="produit-name" data-en>PDF Mini-Guides</h3>
+        <p class="produit-desc" data-fr>Guides courts (10–20 pages) sur l'IA, la productivité et le numérique. Des résultats concrets, pas du remplissage.</p>
+        <p class="produit-desc" data-en>Short guides (10–20 pages) on AI, productivity and digital tools. Concrete results, no fluff.</p>
+        <div class="produit-price">
+          7–20€
+          <span class="range" data-fr>Fort ratio valeur / prix perçue</span>
+          <span class="range" data-en>High value-to-price ratio</span>
+        </div>
+        <div class="produit-tags">
+          <span class="tag">PDF</span>
+          <span class="tag">IA / AI</span>
+          <span class="tag">Productivité</span>
+        </div>
+        <a href="#contact" class="produit-cta">
+          <span class="inline-fr">Être notifié →</span>
+          <span class="inline-en">Get notified →</span>
+        </a>
+      </div>
 
-      <a class="platform-card" href="https://instagram.com/nova.tech_hub" target="_blank" rel="noopener">
-        <div class="platform-icon">◈</div>
-        <h3 class="platform-name">Instagram</h3>
-        <p class="platform-handle">@nova.tech_hub</p>
-        <p class="platform-desc">Reels courts et percutants. Les moments clés de chaque vidéo condensés en 60 secondes.</p>
-      </a>
-
-      <a class="platform-card" href="https://tiktok.com/@nova.tech_hub" target="_blank" rel="noopener">
-        <div class="platform-icon">♪</div>
-        <h3 class="platform-name">TikTok</h3>
-        <p class="platform-handle">@nova.tech_hub</p>
-        <p class="platform-desc">Astuces tech rapides et virales. Format vertical, rythme soutenu, maximum d'impact.</p>
-      </a>
-
+      <!-- Produit C -->
+      <div class="produit-card">
+        <div class="produit-num">03 — Affiliation</div>
+        <svg class="produit-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="16" cy="16" r="7" stroke="#C9A84C" stroke-width="1.5"/>
+          <circle cx="36" cy="16" r="7" stroke="#C8520A" stroke-width="1.5"/>
+          <circle cx="26" cy="34" r="7" stroke="#C9A84C" stroke-width="1.2" stroke-opacity="0.6"/>
+          <line x1="22" y1="20" x2="30" y2="20" stroke="#C9A84C" stroke-width="1"/>
+          <line x1="20" y1="24" x2="28" y2="30" stroke="#C9A84C" stroke-width="0.8" stroke-opacity="0.5"/>
+        </svg>
+        <h3 class="produit-name" data-fr>Affiliation & Revenus Passifs</h3>
+        <h3 class="produit-name" data-en>Affiliate & Passive Income</h3>
+        <p class="produit-desc" data-fr>Recommandations d'outils SaaS utiles via des liens affiliés. Intégrés naturellement dans le contenu et sur la plateforme.</p>
+        <p class="produit-desc" data-en>Recommendations of useful SaaS tools via affiliate links. Naturally integrated into content and on the platform.</p>
+        <div class="produit-price">
+          Passif
+          <span class="range" data-fr>Commission sur chaque vente référée</span>
+          <span class="range" data-en>Commission on every referred sale</span>
+        </div>
+        <div class="produit-tags">
+          <span class="tag">SaaS</span>
+          <span class="tag">Outils</span>
+          <span class="tag">Liens affiliés</span>
+        </div>
+        <a href="#contact" class="produit-cta">
+          <span class="inline-fr">En savoir plus →</span>
+          <span class="inline-en">Learn more →</span>
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════════════════════
-     À PROPOS (résumé home)
-══════════════════════════════════════ -->
-<div class="section" id="about">
-  <div class="about-inner">
-
-    <div class="about-text">
-      <p class="section-tag">À Propos</p>
-      <h2>Pourquoi <em>NovaTech Hub</em> existe</h2>
-      <p>La technologie évolue plus vite que jamais. Mais les explications claires, accessibles et honnêtes restent rares — surtout pour ceux qui débutent ou qui n'ont pas accès aux ressources des grandes villes.</p>
-      <p>NovaTech Hub est né de cette conviction : tout le monde mérite de comprendre et maîtriser sa technologie, peu importe d'où il vient.</p>
-      <div class="about-values">
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p class="value-text"><strong>Simplicité</strong> — Aucun jargon inutile. Des explications que tout le monde comprend.</p>
+<!-- MANIFESTE / ABOUT -->
+<section id="manifeste">
+  <div class="container">
+    <div class="manifeste-grid">
+      <div class="manifeste-text">
+        <p class="section-eyebrow">
+          <span class="inline-fr">Qui sommes-nous</span>
+          <span class="inline-en">Who we are</span>
+        </p>
+        <h2 class="section-title">
+          <span data-fr>Construire depuis <span class="accent">l'Afrique</span><br>pour le monde.</span>
+          <span data-en>Building from <span class="accent">Africa</span><br>for the world.</span>
+        </h2>
+        <blockquote class="manifeste-quote" data-fr>
+          "Penser grand, construire petit à petit, documenter — s'adapter au marché."
+        </blockquote>
+        <blockquote class="manifeste-quote" data-en>
+          "Think big, build step by step, document — adapt to the market."
+        </blockquote>
+        <p class="manifeste-body" data-fr>
+          NovaTech Hub est le canal de monétisation de l'écosystème ArcaneOS. Fondé au Bénin, il s'adresse aux entrepreneurs francophones africains et européens qui veulent tirer parti du numérique.
+        </p>
+        <p class="manifeste-body" data-en>
+          NovaTech Hub is the monetization channel of the ArcaneOS ecosystem. Founded in Benin, it targets African and European francophone entrepreneurs who want to leverage the digital world.
+        </p>
+        <p class="manifeste-body" data-fr>
+          Chaque produit est pensé pour apporter une valeur réelle. Pas de superflu. Pas de promesses vides. Des outils qui fonctionnent, testés dans des conditions réelles.
+        </p>
+        <p class="manifeste-body" data-en>
+          Every product is designed to bring real value. No fluff. No empty promises. Tools that work, tested in real conditions.
+        </p>
+        <div class="deco-sep">
+          <div class="deco-sep-line"></div>
+          <div class="deco-sep-mark"></div>
+          <div class="deco-sep-line"></div>
         </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p class="value-text"><strong>Honnêteté</strong> — Des conseils testés et validés, pas du contenu copié-collé.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p class="value-text"><strong>Accessibilité</strong> — Des produits à prix juste, pensés pour tous les budgets.</p>
+        <p class="manifeste-body" style="font-size:0.85rem;" data-fr>
+          Partie d'ArcaneOS · Fondé par <strong style="color: var(--text);">Modeste Z.</strong> · Bénin
+        </p>
+        <p class="manifeste-body" style="font-size:0.85rem;" data-en>
+          Part of ArcaneOS · Founded by <strong style="color: var(--text);">Modeste Z.</strong> · Benin
+        </p>
+      </div>
+      <div class="manifeste-visual">
+        <div class="manifeste-visual-inner">
+          <p style="font-family: var(--font-mono); font-size:10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom:2rem;" data-fr>Notre approche</p>
+          <p style="font-family: var(--font-mono); font-size:10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom:2rem;" data-en>Our approach</p>
+          <ul class="manifeste-list">
+            <li>
+              <div class="check"></div>
+              <div class="item-text">
+                <strong data-fr>Stack 100% gratuit</strong>
+                <strong data-en>100% free stack</strong>
+                <span data-fr>Tous nos outils sont open source ou gratuits. Accessibles à tous, sans barrière financière.</span>
+                <span data-en>All our tools are open source or free. Accessible to everyone, no financial barrier.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check"></div>
+              <div class="item-text">
+                <strong data-fr>Contenu faceless</strong>
+                <strong data-en>Faceless content</strong>
+                <span data-fr>Voix IA, montage vidéo, sous-titres auto. La qualité du message, pas du visage.</span>
+                <span data-en>AI voice, video editing, auto subtitles. Quality of the message, not the face.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check"></div>
+              <div class="item-text">
+                <strong data-fr>S'adapter au marché</strong>
+                <strong data-en>Adapt to the market</strong>
+                <span data-fr>Observer ce qui se vend. Créer selon la demande. Innover sur la suite.</span>
+                <span data-en>Watch what sells. Create based on demand. Innovate from there.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check"></div>
+              <div class="item-text">
+                <strong data-fr>Bilingue FR / EN</strong>
+                <strong data-en>Bilingual FR / EN</strong>
+                <span data-fr>Audience francophone en premier, ouverture progressive vers l'anglophone.</span>
+                <span data-en>Francophone audience first, gradual expansion to English speakers.</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <br>
-      <a class="btn-secondary" href="about.html" style="margin-top:1rem;">Découvrir le fondateur →</a>
     </div>
+  </div>
+</section>
 
-    <div class="about-visual">
-      <img src="assets/images/modeste.png" alt="S. Modeste YABLA — Fondateur NovaTech Hub" />
-      <div class="about-visual-caption">
-        <p class="about-visual-name">S. Modeste YABLA</p>
-        <p class="about-visual-role">Fondateur · NovaTech Hub · Bénin 🇧🇯</p>
+<!-- PLATEFORMES -->
+<section id="plateformes">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">
+        <span class="inline-fr">Rejoins la communauté</span>
+        <span class="inline-en">Join the community</span>
+      </p>
+      <h2 class="section-title">
+        <span data-fr>Nos <span class="accent">chaînes</span></span>
+        <span data-en>Our <span class="accent">channels</span></span>
+      </h2>
+      <p class="section-sub" data-fr>Contenu faceless : tips tech, outils IA, productivité. Disponible sur toutes les plateformes.</p>
+      <p class="section-sub" data-en>Faceless content: tech tips, AI tools, productivity. Available on all platforms.</p>
+    </div>
+    <div class="plateformes-row">
+
+      <a href="https://youtube.com/@nova.tech_hub" target="_blank" class="plateforme-card yt">
+        <span class="plateforme-arrow">↗</span>
+        <div class="plateforme-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="7" width="28" height="18" rx="4" fill="rgba(255,0,0,0.15)" stroke="#FF0000" stroke-width="1.2"/>
+            <path d="M13 12L21 16L13 20V12Z" fill="#FF0000"/>
+          </svg>
+        </div>
+        <div class="plateforme-name">YouTube</div>
+        <span class="plateforme-handle">@nova.tech_hub</span>
+        <p class="plateforme-desc" data-fr>Vidéos longues format — tutoriels, guides complets, démonstrations d'outils.</p>
+        <p class="plateforme-desc" data-en>Long-form videos — tutorials, complete guides, tool demos.</p>
+      </a>
+
+      <a href="https://instagram.com/nova.tech_hub" target="_blank" class="plateforme-card ig">
+        <span class="plateforme-arrow">↗</span>
+        <div class="plateforme-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="4" width="24" height="24" rx="6" stroke="url(#ig)" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="6" stroke="url(#ig)" stroke-width="1.2"/>
+            <circle cx="23" cy="9" r="1.5" fill="#C13584"/>
+            <defs>
+              <linearGradient id="ig" x1="4" y1="28" x2="28" y2="4">
+                <stop offset="0%" stop-color="#F77737"/>
+                <stop offset="100%" stop-color="#C13584"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="plateforme-name">Instagram</div>
+        <span class="plateforme-handle">@nova.tech_hub</span>
+        <p class="plateforme-desc" data-fr>Reels & posts — tips rapides, visuels produits, coulisses du projet.</p>
+        <p class="plateforme-desc" data-en>Reels & posts — quick tips, product visuals, behind the scenes.</p>
+      </a>
+
+      <a href="https://tiktok.com/@nova.tech_hub" target="_blank" class="plateforme-card tt">
+        <span class="plateforme-arrow">↗</span>
+        <div class="plateforme-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M22 4c0 4 3 7 6 8v4c-2-0.5-4-1.5-6-3v10a8 8 0 1 1-8-8v4a4 4 0 1 0 4 4V4h4Z" fill="none" stroke="#EE1D52" stroke-width="1.3"/>
+            <path d="M20 4c0 4 3 7 6 8" stroke="#69C9D0" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="plateforme-name">TikTok</div>
+        <span class="plateforme-handle">@nova.tech_hub</span>
+        <p class="plateforme-desc" data-fr>Shorts viraux — tendances tech, outils IA, conseils productivité en 60 secondes.</p>
+        <p class="plateforme-desc" data-en>Viral shorts — tech trends, AI tools, productivity tips in 60 seconds.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-eyebrow">
+          <span class="inline-fr">Travaillons ensemble</span>
+          <span class="inline-en">Let's work together</span>
+        </p>
+        <h2 class="section-title" style="margin-bottom: 1rem;">
+          <span data-fr>Prends <span class="accent">contact</span></span>
+          <span data-en>Get in <span class="accent">touch</span></span>
+        </h2>
+        <p style="color: var(--text-muted); font-size:0.95rem; margin-bottom:2.5rem;" data-fr>
+          Partenariat, collaboration, question sur un produit — on répond à tout.
+        </p>
+        <p style="color: var(--text-muted); font-size:0.95rem; margin-bottom:2.5rem;" data-en>
+          Partnership, collaboration, product question — we respond to everything.
+        </p>
+
+        <form class="contact-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
+          <div class="form-group">
+            <label for="name" data-fr>Nom complet</label>
+            <label for="name" data-en>Full name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="sujet" data-fr>Sujet</label>
+            <label for="sujet" data-en>Subject</label>
+            <select id="sujet" name="sujet">
+              <option value="" data-fr>Sélectionner...</option>
+              <option value="" data-en>Select...</option>
+              <option data-fr>Question produit</option>
+              <option data-en>Product question</option>
+              <option data-fr>Partenariat</option>
+              <option data-en>Partnership</option>
+              <option data-fr>Collaboration contenu</option>
+              <option data-en>Content collaboration</option>
+              <option data-fr>Autre</option>
+              <option data-en>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;">
+            <span class="inline-fr">Envoyer le message</span>
+            <span class="inline-en">Send message</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <p class="section-eyebrow" style="margin-bottom: 2rem;">
+          <span class="inline-fr">Infos</span>
+          <span class="inline-en">Info</span>
+        </p>
+        <div class="contact-info-item">
+          <div class="contact-icon">⊕</div>
+          <div>
+            <div class="contact-info-label" data-fr>Plateforme de vente</div>
+            <div class="contact-info-label" data-en>Sales platform</div>
+            <div class="contact-info-value">
+              <a href="https://gumroad.com" target="_blank">Gumroad</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">◎</div>
+          <div>
+            <div class="contact-info-label" data-fr>Localisation</div>
+            <div class="contact-info-label" data-en>Location</div>
+            <div class="contact-info-value" data-fr>Bénin — Afrique de l'Ouest</div>
+            <div class="contact-info-value" data-en>Benin — West Africa</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">◈</div>
+          <div>
+            <div class="contact-info-label" data-fr>Audience</div>
+            <div class="contact-info-label" data-en>Audience</div>
+            <div class="contact-info-value" data-fr>Francophones africains & européens</div>
+            <div class="contact-info-value" data-en>African & European francophones</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">◉</div>
+          <div>
+            <div class="contact-info-label">Ecosystem</div>
+            <div class="contact-info-value">
+              <a href="#" style="color: var(--copper-light);">ArcaneOS</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: var(--bg); border: 1px solid var(--border);">
+          <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom: 1rem;" data-fr>Notification produits</p>
+          <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom: 1rem;" data-en>Product notifications</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-fr>Reçois un email dès qu'un nouveau produit est disponible.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-en>Get notified by email when a new product drops.</p>
+          <div style="display: flex; gap: 0.75rem;">
+            <input type="email" placeholder="ton@email.com" style="background:var(--bg-3); border:1px solid var(--border-strong); color:var(--text); font-family:var(--font-sans); font-size:14px; padding:0.7rem 1rem; outline:none; flex:1;">
+            <button class="btn-primary" style="white-space:nowrap; font-size:12px; padding: 0.7rem 1rem;">OK</button>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════════════════════
-     CONTACT
-══════════════════════════════════════ -->
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <p class="section-tag">Contact</p>
-    <h2>Une question ?<br><em>Écris-nous.</em></h2>
-    <p>Tu veux être notifié des nouveaux produits, poser une question technique ou proposer une collaboration ? On te répond.</p>
-
-    <form class="contact-form" id="contact-form">
-      <input type="text" name="prenom" placeholder="Ton prénom" required />
-      <input type="email" name="email" placeholder="Ton email" required />
-      <textarea name="message" placeholder="Ton message..." required></textarea>
-      <button type="submit" class="btn-primary" style="align-self:flex-start;">Envoyer →</button>
-      <p id="form-message"></p>
-    </form>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     CTA FINAL
-══════════════════════════════════════ -->
-<div class="cta-section">
-  <div class="cta-line"></div>
-  <h2>Prêt à maîtriser<br><em>ta technologie ?</em></h2>
-  <p>Rejoins la communauté NovaTech Hub et accède à tous les guides et tutoriels.</p>
-  <a class="btn-primary" href="#store">Commencer maintenant</a>
-</div>
-
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">NovaTech Hub</div>
-  <div class="footer-links">
-    <a href="#home">Accueil</a>
-    <a href="#store">Produits</a>
-    <a href="#channels">Chaînes</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 NovaTech Hub · Tous droits réservés</div>
+  <div class="footer-logo">Nova<span>Tech</span> Hub</div>
+  <div class="footer-copy" data-fr>© 2026 NovaTech Hub — Tous droits réservés</div>
+  <div class="footer-copy" data-en>© 2026 NovaTech Hub — All rights reserved</div>
+  <div class="footer-arcane" data-fr>Partie de <a href="#">ArcaneOS</a> · Fondé au Bénin</div>
+  <div class="footer-arcane" data-en>Part of <a href="#">ArcaneOS</a> · Founded in Benin</div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+  function toggleLang() {
+    const body = document.body;
+    const btn = document.getElementById('langToggle');
+    if (body.classList.contains('lang-en')) {
+      body.classList.remove('lang-en');
+      btn.textContent = 'EN / FR';
+      document.documentElement.lang = 'fr';
+    } else {
+      body.classList.add('lang-en');
+      btn.textContent = 'FR / EN';
+      document.documentElement.lang = 'en';
+    }
+  }
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.produit-card, .plateforme-card, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
 </body>
 </html>
