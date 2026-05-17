@@ -31,9 +31,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -43,7 +41,6 @@
     overflow-x: hidden;
   }
 
-  /* ── NOISE OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
@@ -54,7 +51,18 @@
     opacity: 0.4;
   }
 
-  /* ── LANG SWITCH ── */
+  /* ── LANG ── */
+  /* FR par défaut = visible, EN caché */
+  .en { display: none; }
+  .fr { display: inline; }
+  .fr-block { display: block; }
+  .en-block { display: none; }
+
+  body.lang-en .fr { display: none; }
+  body.lang-en .en { display: inline; }
+  body.lang-en .fr-block { display: none; }
+  body.lang-en .en-block { display: block; }
+
   .lang-btn {
     position: fixed;
     top: 1.2rem;
@@ -71,10 +79,7 @@
     transition: all 0.3s;
     backdrop-filter: blur(12px);
   }
-  .lang-btn:hover {
-    background: rgba(201,168,76,0.18);
-    border-color: var(--gold);
-  }
+  .lang-btn:hover { background: rgba(201,168,76,0.18); border-color: var(--gold); }
 
   /* ── NAV ── */
   nav {
@@ -94,19 +99,14 @@
     gap: 0.75rem;
     text-decoration: none;
   }
-  .nav-logo-mark {
-    width: 32px;
-    height: 32px;
-  }
+  .nav-logo-mark { width: 32px; height: 32px; }
   .nav-logo-text {
     font-family: var(--font-serif);
     font-size: 1.1rem;
     color: var(--text);
     letter-spacing: 0.05em;
   }
-  .nav-logo-text span {
-    color: var(--gold);
-  }
+  .nav-logo-text span { color: var(--gold); }
   .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -124,14 +124,8 @@
   }
   .nav-links a:hover { color: var(--gold); }
 
-  /* ── SECTIONS GÉNÉRALES ── */
   section { position: relative; z-index: 1; }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 3rem;
-  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
 
   /* ── HERO ── */
   #hero {
@@ -181,10 +175,7 @@
     color: var(--text);
     margin-bottom: 1.5rem;
   }
-  .hero-title .accent {
-    color: var(--gold);
-    font-style: italic;
-  }
+  .hero-title .accent { color: var(--gold); font-style: italic; }
   .hero-sub {
     color: var(--text-muted);
     font-size: 1.05rem;
@@ -192,11 +183,8 @@
     margin-bottom: 2.5rem;
     max-width: 480px;
   }
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
   .btn-primary {
     background: var(--gold);
     color: var(--bg);
@@ -212,10 +200,8 @@
     transition: all 0.25s;
     display: inline-block;
   }
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
   .btn-ghost {
     background: transparent;
     color: var(--gold);
@@ -231,66 +217,25 @@
     transition: all 0.25s;
     display: inline-block;
   }
-  .btn-ghost:hover {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.08);
-    transform: translateY(-2px);
-  }
+  .btn-ghost:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); transform: translateY(-2px); }
 
-  /* Hero right - visual */
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .hero-card-stack {
-    position: relative;
-    width: 340px;
-    height: 420px;
-  }
+  .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+  .hero-card-stack { position: relative; width: 340px; height: 420px; }
   .hcard {
     position: absolute;
     background: var(--bg-3);
     border: 1px solid var(--border);
     padding: 1.5rem;
     width: 280px;
-    transition: transform 0.6s ease;
   }
   .hcard:nth-child(1) { top: 0; left: 40px; transform: rotate(-3deg); }
   .hcard:nth-child(2) { top: 60px; left: 20px; transform: rotate(1deg); }
-  .hcard:nth-child(3) { top: 120px; left: 0; transform: rotate(0deg); z-index: 3; background: var(--bg-4); border-color: var(--border-strong); }
-  .hcard-tag {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .hcard-title {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-  .hcard-price {
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    color: var(--gold);
-    margin-top: 1rem;
-  }
-  .hcard-price span {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-family: var(--font-sans);
-  }
-  .hcard-bar {
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--copper));
-    margin: 1rem 0 0.5rem;
-    width: 60%;
-  }
+  .hcard:nth-child(3) { top: 120px; left: 0; z-index: 3; background: var(--bg-4); border-color: var(--border-strong); }
+  .hcard-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .hcard-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text); margin-bottom: 0.5rem; }
+  .hcard-price { font-family: var(--font-mono); font-size: 1.5rem; color: var(--gold); margin-top: 1rem; }
+  .hcard-price span { font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-sans); }
+  .hcard-bar { height: 3px; background: linear-gradient(90deg, var(--gold), var(--copper)); margin: 1rem 0 0.5rem; width: 60%; }
 
   /* ── STATS ── */
   #stats {
@@ -298,36 +243,14 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  .stat-item {
-    padding: 2rem 2.5rem;
-    border-right: 1px solid var(--border);
-    text-align: center;
-  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-item { padding: 2rem 2.5rem; border-right: 1px solid var(--border); text-align: center; }
   .stat-item:last-child { border-right: none; }
-  .stat-num {
-    font-family: var(--font-serif);
-    font-size: 2.8rem;
-    color: var(--gold);
-    font-weight: 700;
-    display: block;
-  }
-  .stat-label {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-  }
+  .stat-num { font-family: var(--font-serif); font-size: 2.8rem; color: var(--gold); font-weight: 700; display: block; }
+  .stat-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.25rem; display: block; }
 
   /* ── SECTION HEADERS ── */
-  .section-header {
-    margin-bottom: 4rem;
-  }
+  .section-header { margin-bottom: 4rem; }
   .section-eyebrow {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -339,32 +262,13 @@
     align-items: center;
     gap: 0.75rem;
   }
-  .section-eyebrow::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--copper);
-  }
-  .section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-  }
+  .section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--copper); }
+  .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--text); line-height: 1.2; }
   .section-title .accent { color: var(--gold); font-style: italic; }
-  .section-sub {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-top: 1rem;
-    max-width: 540px;
-  }
+  .section-sub { color: var(--text-muted); font-size: 1rem; margin-top: 1rem; max-width: 540px; }
 
   /* ── PRODUITS ── */
-  #produits {
-    padding: 7rem 0;
-  }
+  #produits { padding: 7rem 0; }
   .produits-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -379,9 +283,7 @@
     overflow: hidden;
     transition: background 0.3s;
   }
-  .produit-card:hover {
-    background: var(--bg-3);
-  }
+  .produit-card:hover { background: var(--bg-3); }
   .produit-card::before {
     content: '';
     position: absolute;
@@ -392,61 +294,15 @@
     transform-origin: left;
     transition: transform 0.4s;
   }
-  .produit-card:hover::before {
-    transform: scaleX(1);
-  }
-  .produit-num {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--text-dim);
-    margin-bottom: 1.5rem;
-  }
-  .produit-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1.5rem;
-    opacity: 0.85;
-  }
-  .produit-name {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-  }
-  .produit-desc {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-  .produit-price {
-    font-family: var(--font-mono);
-    font-size: 1.6rem;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-  }
-  .produit-price .range {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-family: var(--font-sans);
-    display: block;
-    margin-top: 0.2rem;
-  }
-  .produit-tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-  }
-  .tag {
-    font-size: 11px;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--border-strong);
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    letter-spacing: 0.08em;
-  }
+  .produit-card:hover::before { transform: scaleX(1); }
+  .produit-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 1.5rem; }
+  .produit-icon { width: 48px; height: 48px; margin-bottom: 1.5rem; opacity: 0.85; }
+  .produit-name { font-family: var(--font-serif); font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+  .produit-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 2rem; }
+  .produit-price { font-family: var(--font-mono); font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+  .produit-price .range { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-sans); display: block; margin-top: 0.2rem; }
+  .produit-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .tag { font-size: 11px; padding: 0.3rem 0.75rem; border: 1px solid var(--border-strong); color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.08em; }
   .produit-cta {
     display: inline-block;
     font-size: 12px;
@@ -459,27 +315,16 @@
     transition: all 0.2s;
     font-family: var(--font-mono);
   }
-  .produit-cta:hover {
-    border-color: var(--gold);
-    letter-spacing: 0.2em;
-  }
+  .produit-cta:hover { border-color: var(--gold); letter-spacing: 0.2em; }
 
-  /* ── ABOUT / MANIFESTE ── */
+  /* ── MANIFESTE ── */
   #manifeste {
     padding: 7rem 0;
     background: var(--bg-2);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
-  .manifeste-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .manifeste-text {
-    position: relative;
-  }
+  .manifeste-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
   .manifeste-quote {
     font-family: var(--font-serif);
     font-size: 1.5rem;
@@ -490,14 +335,7 @@
     padding-left: 1.5rem;
     margin: 2rem 0;
   }
-  .manifeste-body {
-    color: var(--text-muted);
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
-  }
-  .manifeste-visual {
-    position: relative;
-  }
+  .manifeste-body { color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; }
   .manifeste-visual-inner {
     background: var(--bg-3);
     border: 1px solid var(--border);
@@ -507,65 +345,28 @@
   .manifeste-visual-inner::after {
     content: '';
     position: absolute;
-    bottom: -12px;
-    right: -12px;
-    width: 100%;
-    height: 100%;
+    bottom: -12px; right: -12px;
+    width: 100%; height: 100%;
     border: 1px solid var(--border);
     z-index: -1;
   }
-  .manifeste-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .manifeste-list li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
+  .manifeste-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+  .manifeste-list li { display: flex; gap: 1rem; align-items: flex-start; }
   .manifeste-list .check {
-    width: 18px;
-    height: 18px;
+    width: 18px; height: 18px;
     border: 1px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 3px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 3px;
   }
-  .manifeste-list .check::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    display: block;
-  }
-  .manifeste-list .item-text {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
-  .manifeste-list .item-text strong {
-    color: var(--text);
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.2rem;
-  }
+  .manifeste-list .check::after { content: ''; width: 6px; height: 6px; background: var(--gold); display: block; }
+  .manifeste-list .item-text { color: var(--text-muted); font-size: 0.95rem; }
+  .manifeste-list .item-text strong { color: var(--text); display: block; font-weight: 500; margin-bottom: 0.2rem; }
 
-  /* ── CHAÎNES / PLATFORMS ── */
-  #plateformes {
-    padding: 7rem 0;
-  }
-  .plateformes-row {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 3rem;
-    flex-wrap: wrap;
-  }
+  /* ── PLATEFORMES ── */
+  #plateformes { padding: 7rem 0; }
+  .plateformes-row { display: flex; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
   .plateforme-card {
-    flex: 1;
-    min-width: 200px;
+    flex: 1; min-width: 200px;
     background: var(--bg-2);
     border: 1px solid var(--border);
     padding: 2rem 1.75rem;
@@ -574,88 +375,25 @@
     overflow: hidden;
     text-decoration: none;
   }
-  .plateforme-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+  .plateforme-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.3s; }
   .plateforme-card.yt::after { background: #FF0000; }
   .plateforme-card.ig::after { background: linear-gradient(90deg, #F77737, #C13584); }
   .plateforme-card.tt::after { background: linear-gradient(90deg, #69C9D0, #EE1D52); }
   .plateforme-card:hover { background: var(--bg-3); border-color: var(--border-strong); }
   .plateforme-card:hover::after { opacity: 1; }
-  .plateforme-icon-wrap {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .plateforme-name {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-  .plateforme-handle {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-  .plateforme-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  .plateforme-arrow {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    color: var(--text-dim);
-    font-size: 18px;
-    transition: all 0.3s;
-  }
-  .plateforme-card:hover .plateforme-arrow {
-    color: var(--gold);
-    transform: translate(3px, -3px);
-  }
+  .plateforme-icon-wrap { width: 44px; height: 44px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; }
+  .plateforme-name { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text); margin-bottom: 0.4rem; }
+  .plateforme-handle { font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
+  .plateforme-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+  .plateforme-arrow { position: absolute; top: 1.5rem; right: 1.5rem; color: var(--text-dim); font-size: 18px; transition: all 0.3s; }
+  .plateforme-card:hover .plateforme-arrow { color: var(--gold); transform: translate(3px, -3px); }
 
   /* ── CONTACT ── */
-  #contact {
-    padding: 7rem 0;
-    background: var(--bg-2);
-    border-top: 1px solid var(--border);
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .form-group label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+  #contact { padding: 7rem 0; background: var(--bg-2); border-top: 1px solid var(--border); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
   .form-group input,
   .form-group textarea,
   .form-group select {
@@ -672,49 +410,17 @@
   }
   .form-group input:focus,
   .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--gold);
-  }
+  .form-group select:focus { border-color: var(--gold); }
   .form-group textarea { min-height: 130px; }
   .form-group select option { background: var(--bg-3); }
   .contact-info { padding-top: 0.5rem; }
-  .contact-info-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: flex-start;
-  }
+  .contact-info-item { display: flex; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .contact-info-item:first-child { border-top: 1px solid var(--border); }
-  .contact-icon {
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--border-strong);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--gold);
-    font-size: 14px;
-  }
-  .contact-info-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 0.25rem;
-  }
-  .contact-info-value {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-  }
-  .contact-info-value a {
-    color: var(--gold);
-    text-decoration: none;
-  }
+  .contact-icon { width: 36px; height: 36px; border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); font-size: 14px; }
+  .contact-info-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.25rem; }
+  .contact-info-value { color: var(--text-muted); font-size: 0.9rem; }
+  .contact-info-value a { color: var(--gold); text-decoration: none; }
 
-  /* ── ARCANE BADGE ── */
   .arcane-badge {
     display: inline-flex;
     align-items: center;
@@ -725,13 +431,7 @@
     margin-bottom: 2.5rem;
     text-decoration: none;
   }
-  .arcane-badge-text {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--copper-light);
-  }
+  .arcane-badge-text { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--copper-light); }
 
   /* ── FOOTER ── */
   footer {
@@ -745,56 +445,19 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    color: var(--text-muted);
-  }
+  .footer-logo { font-family: var(--font-serif); font-size: 1rem; color: var(--text-muted); }
   .footer-logo span { color: var(--gold); }
-  .footer-copy {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.08em;
-  }
-  .footer-arcane {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.12em;
-  }
-  .footer-arcane a {
-    color: var(--copper);
-    text-decoration: none;
-  }
+  .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; }
+  .footer-arcane { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; }
+  .footer-arcane a { color: var(--copper); text-decoration: none; }
 
-  /* ── SÉPARATEUR DÉCORATIF ── */
-  .deco-sep {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-  }
-  .deco-sep-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .deco-sep-mark {
-    width: 6px;
-    height: 6px;
-    background: var(--copper);
-    transform: rotate(45deg);
-  }
+  .deco-sep { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
+  .deco-sep-line { flex: 1; height: 1px; background: var(--border); }
+  .deco-sep-mark { width: 6px; height: 6px; background: var(--copper); transform: rotate(45deg); }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
   }
   .anim-1 { animation: fadeUp 0.7s ease forwards; opacity: 0; }
   .anim-2 { animation: fadeUp 0.7s 0.15s ease forwards; opacity: 0; }
@@ -802,7 +465,6 @@
   .anim-4 { animation: fadeUp 0.7s 0.45s ease forwards; opacity: 0; }
   .anim-5 { animation: fadeUp 0.7s 0.6s ease forwards; opacity: 0; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -817,27 +479,16 @@
     .hero-title { font-size: 2.4rem; }
     .section-title { font-size: 1.9rem; }
   }
-
-  /* ── HIDDEN PAR DÉFAUT (gestion langue) ── */
-  [data-en] { display: none; }
-  body.lang-en [data-fr] { display: none; }
-  body.lang-en [data-en] { display: block; }
-  body.lang-en .inline-en { display: inline !important; }
-  body.lang-en .inline-fr { display: none !important; }
-  .inline-en { display: none; }
-  .inline-fr { display: inline; }
 </style>
 </head>
 <body>
 
-<!-- LANG SWITCH -->
 <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN / FR</button>
 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
     <svg class="nav-logo-mark" viewBox="0 0 32 32" fill="none">
-      <!-- NovaTech Hub mark simplifié hexagonale -->
       <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
       <polygon points="16,8 22,11.5 22,18.5 16,22 10,18.5 10,11.5" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="0.8"/>
       <circle cx="16" cy="15" r="2.5" fill="#C9A84C"/>
@@ -845,10 +496,10 @@
     <span class="nav-logo-text">Nova<span>Tech</span> Hub</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#produits" data-fr>Produits</a><a href="#produits" data-en>Products</a></li>
-    <li><a href="#manifeste" data-fr>À propos</a><a href="#manifeste" data-en>About</a></li>
-    <li><a href="#plateformes" data-fr>Chaînes</a><a href="#plateformes" data-en>Channels</a></li>
-    <li><a href="#contact" data-fr>Contact</a><a href="#contact" data-en>Contact</a></li>
+    <li><a href="#produits"><span class="fr">Produits</span><span class="en">Products</span></a></li>
+    <li><a href="#manifeste"><span class="fr">À propos</span><span class="en">About</span></a></li>
+    <li><a href="#plateformes"><span class="fr">Chaînes</span><span class="en">Channels</span></a></li>
+    <li><a href="#contact"><span class="fr">Contact</span><span class="en">Contact</span></a></li>
   </ul>
 </nav>
 
@@ -866,27 +517,27 @@
           <span class="arcane-badge-text">ArcaneOS Ecosystem</span>
         </a>
         <p class="hero-eyebrow anim-1">
-          <span class="inline-fr">Plateforme numérique francophone</span>
-          <span class="inline-en">Francophone Digital Platform</span>
+          <span class="fr">Plateforme numérique francophone</span>
+          <span class="en">Francophone Digital Platform</span>
         </p>
         <h1 class="hero-title anim-2">
-          <span data-fr>Libère ton<br><span class="accent">potentiel</span><br>numérique.</span>
-          <span data-en>Unlock your<br><span class="accent">digital</span><br>potential.</span>
+          <span class="fr">Libère ton<br><span class="accent">potentiel</span><br>numérique.</span>
+          <span class="en">Unlock your<br><span class="accent">digital</span><br>potential.</span>
         </h1>
-        <p class="hero-sub anim-3" data-fr>
+        <p class="hero-sub fr-block anim-3">
           Templates, guides et outils conçus pour les entrepreneurs africains et francophones. Construis, optimise et monétise tes projets numériques.
         </p>
-        <p class="hero-sub anim-3" data-en>
+        <p class="hero-sub en-block anim-3">
           Templates, guides, and tools designed for African and francophone entrepreneurs. Build, optimize, and monetize your digital projects.
         </p>
         <div class="hero-ctas anim-4">
           <a href="#produits" class="btn-primary">
-            <span class="inline-fr">Voir les produits</span>
-            <span class="inline-en">Browse products</span>
+            <span class="fr">Voir les produits</span>
+            <span class="en">Browse products</span>
           </a>
           <a href="#manifeste" class="btn-ghost">
-            <span class="inline-fr">Notre vision</span>
-            <span class="inline-en">Our vision</span>
+            <span class="fr">Notre vision</span>
+            <span class="en">Our vision</span>
           </a>
         </div>
       </div>
@@ -894,19 +545,19 @@
         <div class="hero-card-stack">
           <div class="hcard">
             <div class="hcard-tag">Template</div>
-            <div class="hcard-title">Budget Personnel</div>
+            <div class="hcard-title"><span class="fr">Budget Personnel</span><span class="en">Personal Budget</span></div>
             <div class="hcard-bar"></div>
             <div class="hcard-price">7€ <span>Notion</span></div>
           </div>
           <div class="hcard">
             <div class="hcard-tag">Guide PDF</div>
-            <div class="hcard-title">5 Outils IA Gratuits</div>
+            <div class="hcard-title"><span class="fr">5 Outils IA Gratuits</span><span class="en">5 Free AI Tools</span></div>
             <div class="hcard-bar"></div>
             <div class="hcard-price">9€ <span>20 pages</span></div>
           </div>
           <div class="hcard">
             <div class="hcard-tag">Bundle Premium</div>
-            <div class="hcard-title">Pack Entrepreneur 2026</div>
+            <div class="hcard-title"><span class="fr">Pack Entrepreneur 2026</span><span class="en">Entrepreneur Pack 2026</span></div>
             <div class="hcard-bar"></div>
             <div class="hcard-price">24€ <span>Templates + Guides</span></div>
           </div>
@@ -922,23 +573,23 @@
     <div class="stats-grid">
       <div class="stat-item">
         <span class="stat-num">100%</span>
-        <span class="stat-label" data-fr>Outils gratuits & open source</span>
-        <span class="stat-label" data-en>Free & open source tools</span>
+        <span class="stat-label fr">Outils gratuits & open source</span>
+        <span class="stat-label en">Free & open source tools</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">3</span>
-        <span class="stat-label" data-fr>Plateformes de distribution</span>
-        <span class="stat-label" data-en>Distribution platforms</span>
+        <span class="stat-label fr">Plateformes de distribution</span>
+        <span class="stat-label en">Distribution platforms</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">FR/EN</span>
-        <span class="stat-label" data-fr>Contenu bilingue</span>
-        <span class="stat-label" data-en>Bilingual content</span>
+        <span class="stat-label fr">Contenu bilingue</span>
+        <span class="stat-label en">Bilingual content</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">2026</span>
-        <span class="stat-label" data-fr>Lancement produits</span>
-        <span class="stat-label" data-en>Products launch</span>
+        <span class="stat-label fr">Lancement produits</span>
+        <span class="stat-label en">Products launch</span>
       </div>
     </div>
   </div>
@@ -949,15 +600,15 @@
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">
-        <span class="inline-fr">Ce qu'on construit</span>
-        <span class="inline-en">What we build</span>
+        <span class="fr">Ce qu'on construit</span>
+        <span class="en">What we build</span>
       </p>
       <h2 class="section-title">
-        <span data-fr>Nos <span class="accent">produits</span></span>
-        <span data-en>Our <span class="accent">products</span></span>
+        <span class="fr">Nos <span class="accent">produits</span></span>
+        <span class="en">Our <span class="accent">products</span></span>
       </h2>
-      <p class="section-sub" data-fr>Des outils concrets pour aller plus vite, mieux organiser et générer des revenus.</p>
-      <p class="section-sub" data-en>Concrete tools to move faster, organize better, and generate income.</p>
+      <p class="section-sub fr-block">Des outils concrets pour aller plus vite, mieux organiser et générer des revenus.</p>
+      <p class="section-sub en-block">Concrete tools to move faster, organize better, and generate income.</p>
     </div>
     <div class="produits-grid">
 
@@ -971,27 +622,26 @@
           <rect x="12" y="27" width="20" height="2" rx="1" fill="rgba(201,168,76,0.2)"/>
           <rect x="12" y="33" width="12" height="2" rx="1" fill="rgba(201,168,76,0.15)"/>
         </svg>
-        <h3 class="produit-name" data-fr>Templates & Outils</h3>
-        <h3 class="produit-name" data-en>Templates & Tools</h3>
-        <p class="produit-desc" data-fr>Planners, trackers et business plans prêts à l'emploi. Notion, Excel, Canva. Conçus pour les étudiants et jeunes entrepreneurs africains.</p>
-        <p class="produit-desc" data-en>Ready-to-use planners, trackers and business plans. Notion, Excel, Canva. Designed for students and young African entrepreneurs.</p>
+        <h3 class="produit-name"><span class="fr">Templates & Outils</span><span class="en">Templates & Tools</span></h3>
+        <p class="produit-desc fr-block">Planners, trackers et business plans prêts à l'emploi. Notion, Excel, Canva. Conçus pour les étudiants et jeunes entrepreneurs africains.</p>
+        <p class="produit-desc en-block">Ready-to-use planners, trackers and business plans. Notion, Excel, Canva. Designed for students and young African entrepreneurs.</p>
         <div class="produit-price">
           5–15€
-          <span class="range" data-fr>Bundle disponible · 20–30€</span>
-          <span class="range" data-en>Bundle available · €20–30</span>
+          <span class="range fr">Bundle disponible · 20–30€</span>
+          <span class="range en">Bundle available · €20–30</span>
         </div>
         <div class="produit-tags">
           <span class="tag">Notion</span>
           <span class="tag">Excel</span>
           <span class="tag">Canva</span>
         </div>
-        <a href="#contact" class="produit-cta">
-          <span class="inline-fr">Être notifié →</span>
-          <span class="inline-en">Get notified →</span>
+        <a href="https://selar.com/m/modestemqjatjqu" target="_blank" rel="noopener" class="produit-cta">
+          <span class="fr">Voir la boutique →</span>
+          <span class="en">Browse store →</span>
         </a>
       </div>
 
-      <!-- Produit B -->
+      <!-- Produit B — DISPONIBLE -->
       <div class="produit-card" style="border-color: rgba(201,168,76,0.35); box-shadow: 0 0 32px rgba(201,168,76,0.07);">
         <div class="produit-num" style="color: var(--gold);">02 — Guide PDF · <span style="color: var(--copper); font-weight:600;">DISPONIBLE</span></div>
         <svg class="produit-icon" viewBox="0 0 48 48" fill="none">
@@ -1001,23 +651,27 @@
           <rect x="16" y="27" width="12" height="2" rx="1" fill="rgba(201,168,76,0.2)"/>
           <rect x="16" y="32" width="10" height="2" rx="1" fill="rgba(201,168,76,0.15)"/>
         </svg>
-        <h3 class="produit-name" data-fr>Créer &amp; Vendre son Premier Produit Digital</h3>
-        <h3 class="produit-name" data-en>Create &amp; Sell Your First Digital Product</h3>
-        <p class="produit-desc" data-fr>Le guide complet pour lancer ton premier produit numérique — sans audience, sans budget. De l'idée à la première vente, étape par étape.</p>
-        <p class="produit-desc" data-en>The complete guide to launch your first digital product — no audience, no budget needed. From idea to first sale, step by step.</p>
+        <h3 class="produit-name">
+          <span class="fr">Ce que tu as suffit — construire un système de revenu réel</span>
+          <span class="en">What you have is enough — building a real income system</span>
+        </h3>
+        <p class="produit-desc fr-block">Le guide complet pour construire un système de revenu réel — peu importe tes conditions, ton budget, ton niveau. Basé sur une expérience vécue au Bénin.</p>
+        <p class="produit-desc en-block">The complete guide to build a real income system — regardless of your conditions, budget, or level. Based on lived experience in Benin.</p>
         <div class="produit-price">
           7€
-          <span class="range" data-fr>Accès immédiat · PDF téléchargeable</span>
-          <span class="range" data-en>Instant access · Downloadable PDF</span>
+          <span class="range fr">Accès immédiat · PDF téléchargeable</span>
+          <span class="range en">Instant access · Downloadable PDF</span>
         </div>
         <div class="produit-tags">
           <span class="tag">PDF</span>
-          <span class="tag">Business</span>
-          <span class="tag">Débutant</span>
+          <span class="tag fr">Revenus</span>
+          <span class="tag en">Income</span>
+          <span class="tag fr">Système</span>
+          <span class="tag en">System</span>
         </div>
         <a href="https://selar.com/7o7941324p" class="produit-cta" target="_blank" rel="noopener">
-          <span class="inline-fr">Obtenir le guide — 7€ →</span>
-          <span class="inline-en">Get the guide — €7 →</span>
+          <span class="fr">Obtenir le guide — 7€ →</span>
+          <span class="en">Get the guide — €7 →</span>
         </a>
       </div>
 
@@ -1031,58 +685,59 @@
           <line x1="22" y1="20" x2="30" y2="20" stroke="#C9A84C" stroke-width="1"/>
           <line x1="20" y1="24" x2="28" y2="30" stroke="#C9A84C" stroke-width="0.8" stroke-opacity="0.5"/>
         </svg>
-        <h3 class="produit-name" data-fr>Affiliation & Revenus Passifs</h3>
-        <h3 class="produit-name" data-en>Affiliate & Passive Income</h3>
-        <p class="produit-desc" data-fr>Recommandations d'outils SaaS utiles via des liens affiliés. Intégrés naturellement dans le contenu et sur la plateforme.</p>
-        <p class="produit-desc" data-en>Recommendations of useful SaaS tools via affiliate links. Naturally integrated into content and on the platform.</p>
+        <h3 class="produit-name"><span class="fr">Affiliation & Revenus Passifs</span><span class="en">Affiliate & Passive Income</span></h3>
+        <p class="produit-desc fr-block">Recommandations d'outils SaaS utiles via des liens affiliés. Intégrés naturellement dans le contenu et sur la plateforme.</p>
+        <p class="produit-desc en-block">Recommendations of useful SaaS tools via affiliate links. Naturally integrated into content and on the platform.</p>
         <div class="produit-price">
           Passif
-          <span class="range" data-fr>Commission sur chaque vente référée</span>
-          <span class="range" data-en>Commission on every referred sale</span>
+          <span class="range fr">Commission sur chaque vente référée</span>
+          <span class="range en">Commission on every referred sale</span>
         </div>
         <div class="produit-tags">
           <span class="tag">SaaS</span>
-          <span class="tag">Outils</span>
-          <span class="tag">Liens affiliés</span>
+          <span class="tag fr">Outils</span>
+          <span class="tag en">Tools</span>
+          <span class="tag fr">Liens affiliés</span>
+          <span class="tag en">Affiliate links</span>
         </div>
         <a href="#contact" class="produit-cta">
-          <span class="inline-fr">En savoir plus →</span>
-          <span class="inline-en">Learn more →</span>
+          <span class="fr">En savoir plus →</span>
+          <span class="en">Learn more →</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MANIFESTE / ABOUT -->
+<!-- MANIFESTE -->
 <section id="manifeste">
   <div class="container">
     <div class="manifeste-grid">
       <div class="manifeste-text">
         <p class="section-eyebrow">
-          <span class="inline-fr">Qui sommes-nous</span>
-          <span class="inline-en">Who we are</span>
+          <span class="fr">Qui sommes-nous</span>
+          <span class="en">Who we are</span>
         </p>
         <h2 class="section-title">
-          <span data-fr>Construit depuis <span class="accent">l'Afrique</span><br>pour le monde.</span>
-          <span data-en>Building from <span class="accent">Africa</span><br>for the world.</span>
+          <span class="fr">Construit depuis <span class="accent">l'Afrique</span><br>pour le monde.</span>
+          <span class="en">Building from <span class="accent">Africa</span><br>for the world.</span>
         </h2>
-        <blockquote class="manifeste-quote" data-fr>
+        <blockquote class="manifeste-quote fr-block">
           "Penser grand, construire petit à petit, se documenter et s'adapter au marché."
         </blockquote>
-        <blockquote class="manifeste-quote" data-en>
-          "Think big, build step by step, to document and adapt to the market."
+        <blockquote class="manifeste-quote en-block">
+          "Think big, build step by step, document and adapt to the market."
         </blockquote>
-        <p class="manifeste-body" data-fr>
-          NovaTech Hub est le canal de monétisation de l'écosystème ArcaneOS. Fondé en Afrique, au Bénin, il s'adresse aux entrepreneurs francophones africains et européens qui veulent tirer parti du numérique.
+        <p class="manifeste-body fr-block">
+          NovaTech Hub est le canal de monétisation de l'écosystème ArcaneOS. Fondé au Bénin, il s'adresse aux entrepreneurs francophones africains et européens qui veulent tirer parti du numérique.
         </p>
-        <p class="manifeste-body" data-en>
-          NovaTech Hub is the monetization channel of the ArcaneOS ecosystem. Founded in Benin (Africa), it targets African and European francophone entrepreneurs who want to leverage the digital world.
+        <p class="manifeste-body en-block">
+          NovaTech Hub is the monetization channel of the ArcaneOS ecosystem. Founded in Benin, it targets African and European francophone entrepreneurs who want to leverage the digital world.
         </p>
-        <p class="manifeste-body" data-fr>
+        <p class="manifeste-body fr-block">
           Chaque produit est pensé pour apporter une valeur réelle. Pas de superflu. Pas de promesses vides. Des outils qui fonctionnent, testés dans des conditions réelles.
         </p>
-        <p class="manifeste-body" data-en>
+        <p class="manifeste-body en-block">
           Every product is designed to bring real value. No fluff. No empty promises. Tools that work, tested in real conditions.
         </p>
         <div class="deco-sep">
@@ -1090,53 +745,50 @@
           <div class="deco-sep-mark"></div>
           <div class="deco-sep-line"></div>
         </div>
-        <p class="manifeste-body" style="font-size:0.85rem;" data-fr>
+        <p class="manifeste-body fr-block" style="font-size:0.85rem;">
           Partie d'ArcaneOS · Fondé par <strong style="color: var(--text);">Modeste YABLA</strong> · Bénin
         </p>
-        <p class="manifeste-body" style="font-size:0.85rem;" data-en>
+        <p class="manifeste-body en-block" style="font-size:0.85rem;">
           Part of ArcaneOS · Founded by <strong style="color: var(--text);">Modeste YABLA</strong> · Benin
         </p>
       </div>
       <div class="manifeste-visual">
         <div class="manifeste-visual-inner">
-          <p style="font-family: var(--font-mono); font-size:10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom:2rem;" data-fr>Notre approche</p>
-          <p style="font-family: var(--font-mono); font-size:10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom:2rem;" data-en>Our approach</p>
+          <p style="font-family: var(--font-mono); font-size:10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom:2rem;">
+            <span class="fr">Notre approche</span>
+            <span class="en">Our approach</span>
+          </p>
           <ul class="manifeste-list">
             <li>
               <div class="check"></div>
               <div class="item-text">
-                <span data-en><strong >100% free stack</strong></span>
-                <span data-fr><strong >Stack 100% gratuit</strong></span>
-                
-                <span data-fr>Tous nos outils sont open source ou gratuits. Accessibles à tous, sans barrière financière.</span>
-                <span data-en>All our tools are open source or free. Accessible to everyone, no financial barrier.</span>
+                <strong><span class="fr">Stack 100% gratuit</span><span class="en">100% free stack</span></strong>
+                <span class="fr">Tous nos outils sont open source ou gratuits. Accessibles à tous, sans barrière financière.</span>
+                <span class="en">All our tools are open source or free. Accessible to everyone, no financial barrier.</span>
               </div>
             </li>
             <li>
               <div class="check"></div>
               <div class="item-text">
-                <strong data-fr>Contenu faceless</strong>
-                <strong data-en>Faceless content</strong>
-                <span data-fr>Voix IA, montage vidéo, sous-titres auto. La qualité du message, pas du visage.</span>
-                <span data-en>AI voice, video editing, auto subtitles. Quality of the message, not the face.</span>
+                <strong><span class="fr">Contenu faceless</span><span class="en">Faceless content</span></strong>
+                <span class="fr">Voix IA, montage vidéo, sous-titres auto. La qualité du message, pas du visage.</span>
+                <span class="en">AI voice, video editing, auto subtitles. Quality of the message, not the face.</span>
               </div>
             </li>
             <li>
               <div class="check"></div>
               <div class="item-text">
-                <strong data-fr>S'adapter au marché</strong>
-                <strong data-en>Adapt to the market</strong>
-                <span data-fr>Observer ce qui se vend. Créer selon la demande. Innover sur la suite.</span>
-                <span data-en>Watch what sells. Create based on demand. Innovate from there.</span>
+                <strong><span class="fr">S'adapter au marché</span><span class="en">Adapt to the market</span></strong>
+                <span class="fr">Observer ce qui se vend. Créer selon la demande. Innover sur la suite.</span>
+                <span class="en">Watch what sells. Create based on demand. Innovate from there.</span>
               </div>
             </li>
             <li>
               <div class="check"></div>
               <div class="item-text">
-                <strong data-fr>Bilingue FR / EN</strong>
-                <strong data-en>Bilingual FR / EN</strong>
-                <span data-fr>Audience francophone en premier, ouverture progressive vers l'anglophone.</span>
-                <span data-en>Francophone audience first, gradual expansion to English speakers.</span>
+                <strong><span class="fr">Bilingue FR / EN</span><span class="en">Bilingual FR / EN</span></strong>
+                <span class="fr">Audience francophone en premier, ouverture progressive vers l'anglophone.</span>
+                <span class="en">Francophone audience first, gradual expansion to English speakers.</span>
               </div>
             </li>
           </ul>
@@ -1151,18 +803,17 @@
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">
-        <span class="inline-fr">Rejoins la communauté</span>
-        <span class="inline-en">Join the community</span>
+        <span class="fr">Rejoins la communauté</span>
+        <span class="en">Join the community</span>
       </p>
       <h2 class="section-title">
-        <span data-fr>Nos <span class="accent">chaînes</span></span>
-        <span data-en>Our <span class="accent">channels</span></span>
+        <span class="fr">Nos <span class="accent">chaînes</span></span>
+        <span class="en">Our <span class="accent">channels</span></span>
       </h2>
-      <p class="section-sub" data-fr>Contenu faceless : tips tech, outils IA, productivité. Disponible sur toutes les plateformes.</p>
-      <p class="section-sub" data-en>Faceless content: tech tips, AI tools, productivity. Available on all platforms.</p>
+      <p class="section-sub fr-block">Contenu faceless : tips tech, outils IA, productivité. Disponible sur toutes les plateformes.</p>
+      <p class="section-sub en-block">Faceless content: tech tips, AI tools, productivity. Available on all platforms.</p>
     </div>
     <div class="plateformes-row">
-
       <a href="https://youtube.com/@nova.tech_hub" target="_blank" class="plateforme-card yt">
         <span class="plateforme-arrow">↗</span>
         <div class="plateforme-icon-wrap">
@@ -1173,10 +824,9 @@
         </div>
         <div class="plateforme-name">YouTube</div>
         <span class="plateforme-handle">@nova.tech_hub</span>
-        <p class="plateforme-desc" data-fr>Vidéos longues format — tutoriels, guides complets, démonstrations d'outils.</p>
-        <p class="plateforme-desc" data-en>Long-form videos — tutorials, complete guides, tool demos.</p>
+        <p class="plateforme-desc fr-block">Vidéos longues format — tutoriels, guides complets, démonstrations d'outils.</p>
+        <p class="plateforme-desc en-block">Long-form videos — tutorials, complete guides, tool demos.</p>
       </a>
-
       <a href="https://instagram.com/nova.tech_hub" target="_blank" class="plateforme-card ig">
         <span class="plateforme-arrow">↗</span>
         <div class="plateforme-icon-wrap">
@@ -1194,10 +844,9 @@
         </div>
         <div class="plateforme-name">Instagram</div>
         <span class="plateforme-handle">@nova.tech_hub</span>
-        <p class="plateforme-desc" data-fr>Reels & posts — tips rapides, visuels produits, coulisses du projet.</p>
-        <p class="plateforme-desc" data-en>Reels & posts — quick tips, product visuals, behind the scenes.</p>
+        <p class="plateforme-desc fr-block">Reels & posts — tips rapides, visuels produits, coulisses du projet.</p>
+        <p class="plateforme-desc en-block">Reels & posts — quick tips, product visuals, behind the scenes.</p>
       </a>
-
       <a href="https://tiktok.com/@nova.tech_hub" target="_blank" class="plateforme-card tt">
         <span class="plateforme-arrow">↗</span>
         <div class="plateforme-icon-wrap">
@@ -1208,10 +857,9 @@
         </div>
         <div class="plateforme-name">TikTok</div>
         <span class="plateforme-handle">@nova.tech_hub</span>
-        <p class="plateforme-desc" data-fr>Shorts viraux — tendances tech, outils IA, conseils productivité en 60 secondes.</p>
-        <p class="plateforme-desc" data-en>Viral shorts — tech trends, AI tools, productivity tips in 60 seconds.</p>
+        <p class="plateforme-desc fr-block">Shorts viraux — tendances tech, outils IA, conseils productivité en 60 secondes.</p>
+        <p class="plateforme-desc en-block">Viral shorts — tech trends, AI tools, productivity tips in 60 seconds.</p>
       </a>
-
     </div>
   </div>
 </section>
@@ -1222,24 +870,20 @@
     <div class="contact-grid">
       <div>
         <p class="section-eyebrow">
-          <span class="inline-fr">Travaillons ensemble</span>
-          <span class="inline-en">Let's work together</span>
+          <span class="fr">Travaillons ensemble</span>
+          <span class="en">Let's work together</span>
         </p>
         <h2 class="section-title" style="margin-bottom: 1rem;">
-          <span data-fr>Prends <span class="accent">contact</span></span>
-          <span data-en>Get in <span class="accent">touch</span></span>
+          <span class="fr">Prends <span class="accent">contact</span></span>
+          <span class="en">Get in <span class="accent">touch</span></span>
         </h2>
-        <p style="color: var(--text-muted); font-size:0.95rem; margin-bottom:2.5rem;" data-fr>
-          Partenariat, collaboration, question sur un produit — on répond à tout.
+        <p style="color: var(--text-muted); font-size:0.95rem; margin-bottom:2.5rem;">
+          <span class="fr">Partenariat, collaboration, question sur un produit — on répond à tout.</span>
+          <span class="en">Partnership, collaboration, product question — we respond to everything.</span>
         </p>
-        <p style="color: var(--text-muted); font-size:0.95rem; margin-bottom:2.5rem;" data-en>
-          Partnership, collaboration, product question — we respond to everything.
-        </p>
-
         <form class="contact-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
           <div class="form-group">
-            <label for="name" data-fr>Nom complet</label>
-            <label for="name" data-en>Full name</label>
+            <label for="name"><span class="fr">Nom complet</span><span class="en">Full name</span></label>
             <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
@@ -1247,19 +891,14 @@
             <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="sujet" data-fr>Sujet</label>
-            <label for="sujet" data-en>Subject</label>
+            <label for="sujet"><span class="fr">Sujet</span><span class="en">Subject</span></label>
             <select id="sujet" name="sujet">
-              <option value="" data-fr>Sélectionner...</option>
-              <option value="" data-en>Select...</option>
-              <option data-fr>Question produit</option>
-              <option data-en>Product question</option>
-              <option data-fr>Partenariat</option>
-              <option data-en>Partnership</option>
-              <option data-fr>Collaboration contenu</option>
-              <option data-en>Content collaboration</option>
-              <option data-fr>Autre</option>
-              <option data-en>Other</option>
+              <option value="" class="fr">Sélectionner...</option>
+              <option value="" class="en">Select...</option>
+              <option><span class="fr">Question produit</span><span class="en">Product question</span></option>
+              <option><span class="fr">Partenariat</span><span class="en">Partnership</span></option>
+              <option><span class="fr">Collaboration contenu</span><span class="en">Content collaboration</span></option>
+              <option><span class="fr">Autre</span><span class="en">Other</span></option>
             </select>
           </div>
           <div class="form-group">
@@ -1267,43 +906,48 @@
             <textarea id="message" name="message" required></textarea>
           </div>
           <button type="submit" class="btn-primary" style="align-self:flex-start;">
-            <span class="inline-fr">Envoyer le message</span>
-            <span class="inline-en">Send message</span>
+            <span class="fr">Envoyer le message</span>
+            <span class="en">Send message</span>
           </button>
         </form>
       </div>
-
       <div class="contact-info">
         <p class="section-eyebrow" style="margin-bottom: 2rem;">
-          <span class="inline-fr">Infos</span>
-          <span class="inline-en">Info</span>
+          <span class="fr">Infos</span><span class="en">Info</span>
         </p>
         <div class="contact-info-item">
           <div class="contact-icon">⊕</div>
           <div>
-            <div class="contact-info-label" data-fr>Plateforme de vente</div>
-            <div class="contact-info-label" data-en>Sales platform</div>
+            <div class="contact-info-label">
+              <span class="fr">Plateforme de vente</span><span class="en">Sales platform</span>
+            </div>
             <div class="contact-info-value">
-              <a href="https://gumroad.com" target="_blank">Gumroad</a>
+              <a href="https://selar.com/m/modestemqjatjqu" target="_blank" rel="noopener">Selar</a>
             </div>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon">◎</div>
           <div>
-            <div class="contact-info-label" data-fr>Localisation</div>
-            <div class="contact-info-label" data-en>Location</div>
-            <div class="contact-info-value" data-fr>Bénin — Afrique de l'Ouest</div>
-            <div class="contact-info-value" data-en>Benin — West Africa</div>
+            <div class="contact-info-label">
+              <span class="fr">Localisation</span><span class="en">Location</span>
+            </div>
+            <div class="contact-info-value">
+              <span class="fr">Bénin — Afrique de l'Ouest</span>
+              <span class="en">Benin — West Africa</span>
+            </div>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon">◈</div>
           <div>
-            <div class="contact-info-label" data-fr>Audience</div>
-            <div class="contact-info-label" data-en>Audience</div>
-            <div class="contact-info-value" data-fr>Francophones africains & européens</div>
-            <div class="contact-info-value" data-en>African & European francophones</div>
+            <div class="contact-info-label">
+              <span class="fr">Audience</span><span class="en">Audience</span>
+            </div>
+            <div class="contact-info-value">
+              <span class="fr">Francophones africains & européens</span>
+              <span class="en">African & European francophones</span>
+            </div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1315,12 +959,14 @@
             </div>
           </div>
         </div>
-
         <div style="margin-top: 3rem; padding: 2rem; background: var(--bg); border: 1px solid var(--border);">
-          <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom: 1rem;" data-fr>Notification produits</p>
-          <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom: 1rem;" data-en>Product notifications</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-fr>Reçois un email dès qu'un nouveau produit est disponible.</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-en>Get notified by email when a new product drops.</p>
+          <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing:0.15em; color: var(--text-dim); text-transform:uppercase; margin-bottom: 1rem;">
+            <span class="fr">Notification produits</span><span class="en">Product notifications</span>
+          </p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            <span class="fr">Reçois un email dès qu'un nouveau produit est disponible.</span>
+            <span class="en">Get notified by email when a new product drops.</span>
+          </p>
           <div style="display: flex; gap: 0.75rem;">
             <input type="email" placeholder="ton@email.com" style="background:var(--bg-3); border:1px solid var(--border-strong); color:var(--text); font-family:var(--font-sans); font-size:14px; padding:0.7rem 1rem; outline:none; flex:1;">
             <button class="btn-primary" style="white-space:nowrap; font-size:12px; padding: 0.7rem 1rem;">OK</button>
@@ -1334,10 +980,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Nova<span>Tech</span> Hub</div>
-  <div class="footer-copy" data-fr>© 2026 NovaTech Hub — Tous droits réservés</div>
-  <div class="footer-copy" data-en>© 2026 NovaTech Hub — All rights reserved</div>
-  <div class="footer-arcane" data-fr>Partie de <a href="#">ArcaneOS</a> · Fondé au Bénin</div>
-  <div class="footer-arcane" data-en>Part of <a href="#">ArcaneOS</a> · Founded in Benin</div>
+  <div class="footer-copy">
+    <span class="fr">© 2026 NovaTech Hub — Tous droits réservés</span>
+    <span class="en">© 2026 NovaTech Hub — All rights reserved</span>
+  </div>
+  <div class="footer-arcane">
+    <span class="fr">Partie de <a href="#">ArcaneOS</a> · Fondé au Bénin</span>
+    <span class="en">Part of <a href="#">ArcaneOS</a> · Founded in Benin</span>
+  </div>
 </footer>
 
 <script>
@@ -1355,7 +1005,6 @@
     }
   }
 
-  // Smooth reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
